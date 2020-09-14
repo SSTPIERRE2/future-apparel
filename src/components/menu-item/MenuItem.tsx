@@ -17,7 +17,7 @@ const MenuItem = ({
     linkUrl,
     match,
 }: MenuItemProps) => (
-    <div
+    <nav
         className={`${size} menu-item`}
         onClick={() => history.push(`${match.url}${linkUrl}`)}
     >
@@ -29,7 +29,7 @@ const MenuItem = ({
             <h1 className="title">{title.toUpperCase()}</h1>
             <span className="subtitle">SHOP NOW</span>
         </div>
-    </div>
+    </nav>
 );
 
 export default withRouter(MenuItem);
