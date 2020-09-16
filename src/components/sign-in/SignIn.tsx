@@ -2,27 +2,31 @@ import React, { SyntheticEvent, ChangeEvent, useState } from 'react';
 import FormInput from '../form-input/FormInput';
 import './SignIn.scss';
 import CustomButton from '../custom-button/CustomButton';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { signInWithGoogle, auth } from '../../firebase/firebase.utils';
 
 interface State {
     email: string;
     password: string;
 }
 
+const initialState = {
+    email: '',
+    password: '',
+};
+
 const SignIn = () => {
-    const [userCredentials, setCredentials] = useState<State>({
-        email: '',
-        password: '',
-    });
+    const [userCredentials, setCredentials] = useState<State>(initialState);
     const { email, password } = userCredentials;
 
-    const handleSubmit = (event: SyntheticEvent) => {
+    const handleSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
 
-        setCredentials({
-            email: '',
-            password: '',
-        });
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            setCredentials(initialState);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
