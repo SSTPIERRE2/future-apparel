@@ -3,10 +3,16 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
-import { useCurrentUser } from '../../hooks/user';
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
+import { useSelector } from 'react-redux';
+import { State } from '../../redux/store';
 
 const Header = () => {
-    const currentUser = useCurrentUser();
+    const { currentUser, cartHidden } = useSelector((state: State) => ({
+        currentUser: state.user.currentUser,
+        cartHidden: state.cart.hidden,
+    }));
 
     return (
         <header className="header">
@@ -29,7 +35,9 @@ const Header = () => {
                         SIGN IN
                     </Link>
                 )}
+                <CartIcon />
             </nav>
+            {!cartHidden && <CartDropdown />}
         </header>
     );
 };
