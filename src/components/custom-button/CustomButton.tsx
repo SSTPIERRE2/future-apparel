@@ -5,11 +5,19 @@ interface Props extends React.HTMLProps<HTMLButtonElement> {
     // children: string;
     type?: 'button' | 'submit' | 'reset';
     isGoogleSignIn?: boolean;
+    inverted?: boolean;
 }
 
-const CustomButton = ({ children, isGoogleSignIn, ...otherProps }: Props) => (
+const CustomButton = ({
+    children,
+    isGoogleSignIn,
+    inverted,
+    ...otherProps
+}: Props) => (
     <button
-        className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
+        className={`${inverted ? 'inverted' : ''} ${
+            isGoogleSignIn ? 'google-sign-in' : ''
+        } custom-button`}
         {...otherProps}
     >
         {children}

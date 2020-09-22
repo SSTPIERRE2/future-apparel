@@ -2,7 +2,7 @@ import React from 'react';
 import './MenuItem.scss';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-interface MenuItemProps extends RouteComponentProps {
+interface Props extends RouteComponentProps {
     title: string;
     imageUrl: string;
     size?: string;
@@ -16,7 +16,7 @@ const MenuItem = ({
     history,
     linkUrl,
     match,
-}: MenuItemProps) => (
+}: Props) => (
     <nav
         className={`${size} menu-item`}
         onClick={() => history.push(`${match.url}${linkUrl}`)}
