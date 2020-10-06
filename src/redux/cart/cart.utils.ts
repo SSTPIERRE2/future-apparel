@@ -1,4 +1,4 @@
-import { ShopItem } from '../../pages/shop/Shop.data';
+import { ShopItem } from '../../redux/shop/shop.data';
 
 export const addItemToCart = (
     cartItems: ShopItem[],
@@ -17,4 +17,25 @@ export const addItemToCart = (
     }
 
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
+};
+
+export const removeItemFromCart = (
+    cartItems: ShopItem[],
+    cartItemToRemove: ShopItem
+) => {
+    const existingCartItem = cartItems.find(
+        (item) => item.id === cartItemToRemove.id
+    );
+
+    if (existingCartItem.quantity === 1) {
+        return cartItems.filter(
+            (cartItem) => cartItem.id !== cartItemToRemove.id
+        );
+    }
+
+    return cartItems.map((cartItem) =>
+        cartItem.id === cartItemToRemove.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+    );
 };

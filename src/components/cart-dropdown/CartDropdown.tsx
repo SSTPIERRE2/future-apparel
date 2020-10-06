@@ -6,7 +6,7 @@ import { State } from '../../redux/store';
 import CartItem from '../cart-item/CartItem';
 import './CartDropdown.scss';
 import { createStructuredSelector } from 'reselect';
-import { ShopItem } from '../../pages/shop/Shop.data';
+import { ShopItem } from '../../redux/shop/shop.data';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';

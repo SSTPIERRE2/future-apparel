@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShopItem } from '../../pages/shop/Shop.data';
+import { ShopItem } from '../../redux/shop/shop.data';
 import './CartItem.scss';
 
 const CartItem = ({

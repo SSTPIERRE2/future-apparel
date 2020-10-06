@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { State } from '../../redux/store';
-import { ShopItem } from '../shop/Shop.data';
+import { ShopItem } from '../../redux/shop/shop.data';
 import {
     selectCartItems,
     selectCartTotal,
@@ -49,7 +49,7 @@ const CheckoutPage = () => {
             ))}
 
             <div className="total">
-                <span>${cartTotal}</span>
+                <span>TOTAL: ${cartTotal}</span>
             </div>
         </div>
     );

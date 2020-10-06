@@ -1,6 +1,6 @@
 import React from 'react';
 import './CollectionPreview.scss';
-import { ShopCategory } from '../../pages/shop/Shop.data';
+import { ShopCategory } from '../../redux/shop/shop.data';
 import CollectionItem from '../collection-item/CollectionItem';
 
 const CollectionPreview = ({ title, items }: Omit<ShopCategory, 'id'>) => (
